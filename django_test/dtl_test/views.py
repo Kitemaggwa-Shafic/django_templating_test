@@ -18,17 +18,23 @@ def registration(request):
         # created a simple user details list
         user_details = [firstname,lastname,gender,age]
         print(user_details)
-        print('Student already registered.')
+        print('Student already registered.') 
         return render(
              request, 
              'home.html', 
              {'firstname':firstname, 'lastname':lastname, 'gender':gender, 'age':age})
- 
-        
- 
 
  
+        
 # My default home page
 def home(request):
     # return take on arguments, (request, 'page to return', display you need to render with this template)
     return render(request, 'home.html' )
+
+
+def available_students(request):
+     allStudents = User.objects.all()
+     return render(request, 'home.html', {'allStudnents':allStudents})
+
+def student_reg(request):
+     form = user_form(request.POST)

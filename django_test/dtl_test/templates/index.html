@@ -1,101 +1,36 @@
-<!-- Loading of static files to our html template -->
-{% load static%}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ p_title }}</title>
+{% extends 'base.html' %}
+{% block content %}
+   
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <!-- Now accessing the static there a css dir and it has a style.css file
-         the added css on 2 to be renders within our html file -->
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css'%}"> -->
+ 
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li id="logo">{{ p_title}}</li>
-
-                   <li class="navlink">{{username}}</li>
-          
-                    <li class="navlink">Login</li>
-                    <li class="navlink"><a href="#">Register</a></li>
-                
-                    <li class="navlink">About</li>
-                    <li class="navlink"><a href="{% url 'index' %}">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div class="container">
-        <ul class="nav bg-info">
-          <li class="nav-item">
-            <a class="nav-link link-light" href="/">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="/members">MEMBERS</a>
-          </li>
-        </ul>
-
+       <br><br>
     <div class="sign_title">
         <h3>New Student Registration</h3>
     </div>
      <form action="{% url 'registration' %}" method="POST" id="regform" enctype="multipart/form-data">
-        <!-- Django templating encryption type Cross-Site Reference Token
-        Django will know that data we post to view is in our application 
-        security feature aganist sql injection-->
-           {% csrf_token%}
-           <!-- {% csrf_token %} is a built-in template tag in Django that renders a hidden input field containing a 
-            CSRF (Cross-Site Request Forgery) token in a form. -->
-        <div class="registerdiv">
-            <input type="text" placeholder="Student First Name " name="firstname" required />
-            <input type="text" placeholder="Student Last Name" name="lastname" required />
-            <br>
-                <select name="gender" required>
-                    <option>Select Gender</option> 
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            <br>
-            <input type="text" placeholder="Student Age" name="age" required /> 
-            <input type="submit" value="Register Student" name="submit" style="width:60%" />
-
-<br><br>
-            <div class="row g-3 align-items-center">
-                
-                <div class="col-auto">
-                  <input type="text"  placeholder="Student First Name" name="firstname" class="form-control">
-                </div></br>
-                <div class="col-auto">
-                  <input type="text"  placeholder="Student Last Name" name="lastname" class="form-control">
-                </div> </br>
-                  <select name="gender" class="form-control" style="width:50%">
-                        <option>Select Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select> </br>
-                <div class="col-auto">
-                  <input type="text"  placeholder="Student Age "  name="age" class="form-control">
-                </div></br>
-                <input type="submit" value="Register Student" name="submit" style="width:60%" class="form-control"/>
-
-            </div>
+        {% csrf_token%}
+         <div class="registerdiv">
+          
+      <br><br>
            
+            <input class="form-control form-control-md" type="text" placeholder="Student First Name" name="firstname" ><br>
+            <input class="form-control " type="text" placeholder="Student Last Name" name="lastname" ><br>
+              <select name="gender" class="form-control" style="width:100%">
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select> </br>
+            <input class="form-control form-control-md" type="text" placeholder="Student Age" name="age" ><br>
+            <input type="submit" class="btn btn-success" value="Register Student" name="submit" style="width:100%" class="form-control"/>
+
         </div>
     </form>
 
-
-    <footer>
-
-    </footer>
-
-</body>
-
-</html>
+    {% endblock %}

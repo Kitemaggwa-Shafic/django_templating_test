@@ -1,24 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 
-
-    <h1> Default Home Page</h1>
+    <h1> Kamagu SS Registered Students</h1>
 
     <h2>
-    Student First Name: {{ firstname }}
-    Student Last Name: {{ lastname }}
-    Student Gender:{{ gender }}
-    Student Age: {{ age }}
+    <!-- Student First Name: {{ firstname }} <br>
+    Student Last Name: {{ lastname }}<br>
+    Student Gender:{{ gender }}<br>
+    Student Age: {{ age }}<br> -->
 </h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ firstname }}</td>
+        <td>{{ lastname }}</td>
+        <td>{{ gender }}</td>
+        <td>{{ age }}</td>
+      </tr>
+       
+       
+    </tbody>
+  </table>
     
     <h2>{{ user_details.firstname }}</h2>
     
-</body>
-</html>
+{% endblock %}
